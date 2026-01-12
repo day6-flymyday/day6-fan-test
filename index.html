@@ -4,7 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>데이식스 덕질 유형 테스트</title>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9873081052442442"
+     crossorigin="anonymous"></script>  
+
+    <!-- [중요] 네이버 이미지 엑박(깨짐) 방지 코드 -->
+    <meta name="referrer" content="no-referrer">
     
+    <!-- [광고] 구글 애드센스 스크립트 (헤더용) -->
+    <!-- client=ca-pub-뒤에 본인의 게시자 ID를 넣으세요 -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9873081052442442" crossorigin="anonymous"></script>
+
     <!-- 1. Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -15,10 +25,10 @@
     
     <style>
         /* [중요] 로컬 폰트 설정 */
-        /* memomentKkukkukk.ttf 파일이 이 html 파일과 같은 폴더에 있어야 합니다. */
+        /* 폰트 파일명과 확장자(.ttf)가 정확히 일치해야 합니다. */
         @font-face {
             font-family: 'MyLocalFont';
-            src: url('./이서윤체.ttf') format('truetype');
+            src: url('./MemomentKkukkukk.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -72,6 +82,31 @@
 
     <script type="text/babel">
         const { useState, useEffect } = React;
+
+        // --- [광고] 애드센스 컴포넌트 ---
+        const AdBanner = () => {
+            useEffect(() => {
+                try {
+                    // 광고 스크립트 재실행
+                    (window.adsbygoogle = window.adsbygoogle || []).push({});
+                } catch (e) {
+                    console.error("AdSense error", e);
+                }
+            }, []);
+
+            return (
+                <div className="w-full my-4 flex justify-center bg-white/50 rounded-xl overflow-hidden min-h-[100px] items-center border border-gray-200">
+                    <div className="text-xs text-gray-400 absolute pointer-events-none">광고 영역 (ID 설정시 표시됨)</div>
+                    {/* [여기 수정] 아래 data-ad-client와 data-ad-slot을 본인 것으로 변경하세요 */}
+                    <ins className="adsbygoogle"
+                         style={{ display: "block", width: "100%" }}
+                         data-ad-client="ca-pub-0000000000000000"
+                         data-ad-slot="0000000000"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                </div>
+            );
+        };
 
         // --- 아이콘 컴포넌트 ---
         const Sparkles = ({ className }) => (
@@ -352,7 +387,7 @@
         ESFJ: {
             title: "파워 영업왕",
             subtitle: "친화력 만렙 마이데이",
-            desc: "주변 머글 친구들에게 노래를 끊임없이 추천해. 덕메들을 잘 챙기고, 함께 영차영차 하는 걸 좋아해! 🤝",
+            desc: "주변 머글 친구들에게 노래를 끊임없이 추천해. 덕메들을 잘 챙기고, 함께 으쌰으쌰 하는 걸 좋아해! 🤝",
             song: "♪ Welcome to the Show",
             tags: ["영업성공", "친목도모", "다같이놀자"],
             color: "bg-sky-50 text-sky-600 border-sky-200",
@@ -425,7 +460,7 @@
                 try {
                     await navigator.share({
                     title: '데이식스 덕질 유형 테스트',
-                    text: '나의 덕질 유형은? 지금 확인해보세요! 🍀',
+                    text: '내 데식 덕질 유형은? 지금 확인해보세요! 🍀',
                     url: window.location.href,
                     });
                 } catch (error) {
@@ -471,15 +506,18 @@
                         <span className="text-sky-600 text-xl font-bold bg-sky-100 px-4 py-1 rounded-full border border-sky-200 inline-block">
                             나는 어떤 마이데이?
                         </span>
-                        <h1 className="text-4xl md:text-7xl font-bold text-gray-800 tracking-wide drop-shadow-sm leading-tight">
+                        <h1 className="text-5xl md:text-7xl font-bold text-gray-800 tracking-wide drop-shadow-sm leading-tight">
                             마이데이<br/><span className="text-green-500">유형</span> 테스트
                         </h1>
                         </div>
                         
                         <p className="text-gray-500 text-2xl font-medium leading-relaxed">
                         12가지 질문으로 알아보는<br/>
-                        나의 <b className="text-pink-500 bg-pink-50 px-1 rounded">마이데이 덕질 DNA</b> 🌸
+                        나의 <b className="text-pink-500 bg-pink-50 px-1 rounded">덕질 DNA</b> 🌸
                         </p>
+                        
+                        {/* [광고] 인트로 하단 광고 */}
+                        <AdBanner />
                         
                         <button
                         onClick={() => setCurrentStep('test')}
@@ -585,7 +623,7 @@
 
                         <div className="text-center mb-6 mt-4">
                             <span className="inline-flex items-center gap-1 bg-green-100 text-green-700 px-4 py-1.5 rounded-full font-bold text-2xl border border-green-200">
-                                <span className="animate-spin-slow">🌸</span> 나의 데식 덕질 유형 <span className="animate-spin-slow">🌸</span>
+                                <span className="animate-spin-slow">🌸</span> 나의 덕질 유형 <span className="animate-spin-slow">🌸</span>
                             </span>
                         </div>
 
@@ -646,6 +684,9 @@
                             </div>
                         </div>
                         </div>
+
+                        {/* [광고] 결과 페이지 하단 광고 */}
+                        <AdBanner />
 
                         <div className="mt-8 space-y-4">
                         <button
